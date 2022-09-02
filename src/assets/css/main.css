@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@600&display=swap");
 @import url(normalize.css);
 @import url(navbar.css);
 
@@ -28,6 +29,7 @@ body {
 }
 
 a {
+  font-family: "Quicksand", sans-serif;
   color: var(--font-clr);
   text-decoration: none;
 }
