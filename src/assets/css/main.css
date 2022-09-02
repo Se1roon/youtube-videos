@@ -2,6 +2,7 @@
 @import url(normalize.css);
 @import url(navbar.css);
 @import url(footer.css);
+@import url(home.css);
 
 :root {
   --bg-clr: #000;
@@ -29,7 +30,7 @@ body {
   padding: 0;
 }
 
-#root div {
+#root > div {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
