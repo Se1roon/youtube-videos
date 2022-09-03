@@ -1,7 +1,7 @@
 import { useState } from "react";
+import { Outlet } from "react-router";
 import Header from "./Header";
 import InputGroup from "./InputGroup";
-import Button from "./Button";
 
 const Search = () => {
   const [channelId, setChannelId] = useState("");
@@ -28,6 +28,7 @@ const Search = () => {
         onChannelIdChange={handleChannelIdChange}
         onVideoIdChange={handleVideoIdChange}
       />
+      <Outlet context={[channelId, setChannelId, videoId, setVideoId]} />
     </main>
   );
 };

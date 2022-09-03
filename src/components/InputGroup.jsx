@@ -12,7 +12,7 @@ const InputGroup = ({ onChannelIdChange, onVideoIdChange }) => {
         options={{ placeholder: "Video ID", Id: "videoId" }}
         onChange={onVideoIdChange}
       />
-      <Button content={"Search"} path="/search" />
+      <Button content={"Search"} path="results" />
     </div>
   );
 };
