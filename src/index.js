@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import App from "./App";
 import "./assets/css/main.css";
 import Home from "./components/Home";
+import Search from "./components/Search";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,7 +13,7 @@ root.render(
       <Routes>
         <Route index element={<Navigate to="home" />} />
         <Route path="/" element={<App />}>
-          <Route path="search" element={<h1>Siema search</h1>} />
+          <Route path="search" element={<Search />} />
           <Route path="home" element={<Home />} />
         </Route>
       </Routes>
