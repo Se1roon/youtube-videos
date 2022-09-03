@@ -1,7 +1,9 @@
 const Input = ({ options }) => {
-  const { placeholder } = options;
+  const { placeholder, Id } = options;
 
-  return <input type="text" placeholder={placeholder ? placeholder : null} />;
+  return (
+    <input type="text" id={Id} placeholder={placeholder ? placeholder : null} />
+  );
 };
 
 export default Input;
