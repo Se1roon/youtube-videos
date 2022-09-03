@@ -1,8 +1,20 @@
+import { useState } from "react";
 import Header from "./Header";
 import InputGroup from "./InputGroup";
 import Button from "./Button";
 
 const Search = () => {
+  const [channelId, setChannelId] = useState("");
+  const [videoId, setVideoId] = useState("");
+
+  const handleChannelIdChange = (event) => {
+    setChannelId(event.target.value);
+  };
+
+  const handleVideoIdChange = (event) => {
+    setVideoId(event.target.value);
+  };
+
   return (
     <main className="search circle-anim">
       <Header
@@ -12,7 +24,10 @@ const Search = () => {
           </h1>
         }
       />
-      <InputGroup />
+      <InputGroup
+        onChannelIdChange={handleChannelIdChange}
+        onVideoIdChange={handleVideoIdChange}
+      />
     </main>
   );
 };
