@@ -1,0 +1,67 @@
+@keyframes circle-animation {
+  0% {
+    transform: rotate(90deg);
+  }
+
+  100% {
+    transform: rotate(450deg);
+  }
+}
+
+@keyframes circle-animation2 {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.circle-anim {
+  position: relative;
+}
+
+.circle-anim::after,
+.circle-anim::before {
+  content: "";
+  width: 3rem;
+  height: 2px;
+  background: var(--accent-clr);
+  box-shadow: 0 0 20px 2px var(--accent-clr);
+  position: absolute;
+  top: -4rem;
+  left: 10rem;
+  transform-origin: center;
+}
+
+.circle-anim::after {
+  transform: rotate(90deg);
+  animation: circle-animation 5s infinite alternate;
+}
+
+.circle-anim::before {
+  animation: circle-animation2 5s infinite alternate;
+}
+
+@media screen and (min-width: 550px) {
+  .circle-anim::after,
+  .circle-anim::before {
+    width: 10rem;
+    box-shadow: 0 0 20px 4px var(--accent-clr);
+    left: 10rem;
+  }
+}
+
+@media screen and (min-width: 1140px) {
+  .circle-anim {
+    font-size: 2.5rem;
+  }
+
+  .circle-anim::after,
+  .circle-anim::before {
+    width: 10rem;
+    box-shadow: 0 0 20px 10px var(--accent-clr);
+    left: 26rem;
+  }
+}

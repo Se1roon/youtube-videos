@@ -2,7 +2,7 @@ import Button from "./Button";
 
 const Home = () => {
   return (
-    <main className="home">
+    <main className="home circle-anim">
       <header className="header">
         <div className="heading">
           Youtube <span>Search</span>
