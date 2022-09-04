@@ -30,7 +30,9 @@ const Search = () => {
         onChannelIdChange={handleChannelIdChange}
         onVideoIdChange={handleVideoIdChange}
       />
-      <Outlet context={[channelId, setChannelId, videoId, setVideoId]} />
+      <Outlet
+        context={[channelId, setChannelId, videoId, setVideoId, apiKey]}
+      />
     </main>
   );
 };

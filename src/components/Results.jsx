@@ -1,8 +1,10 @@
 import { useOutletContext } from "react-router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const Results = () => {
-  const [channelId, setChannelId, videoId, setVideoId] = useOutletContext();
+  const [channelId, setChannelId, videoId, setVideoId, apiKey] =
+    useOutletContext();
+  const [videos, setVideos] = useState([]);
 
   useEffect(() => {
     document.querySelector("#channelId").setAttribute("disabled", true);
@@ -21,6 +23,28 @@ const Results = () => {
       document.querySelector("#videoId").removeAttribute("disabled");
     };
   });
+
+  useEffect(() => {
+    if (videoId && !channelId) {
+      fetch(
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          setChannelId(result.items[0].snippet.channelId);
+        });
+    }
+
+    if (channelId) {
+      fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=16&key=${apiKey}`
+      )
+        .then((res) => res.json())
+        .then((result) => {
+          setVideos(result.items);
+        });
+    }
+  }, []);
 
   return (
     <div>
