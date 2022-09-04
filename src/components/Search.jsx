@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Outlet } from "react-router";
 import Header from "./Header";
 import InputGroup from "./InputGroup";
+import getData from "../data";
 
 const Search = () => {
   const [channelId, setChannelId] = useState("");
   const [videoId, setVideoId] = useState("");
+  const [apiKey, setApiKey] = useState(getData().apiKey);
 
   const handleChannelIdChange = (event) => {
     setChannelId(event.target.value);
