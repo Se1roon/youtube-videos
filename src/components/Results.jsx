@@ -5,6 +5,7 @@ const Results = () => {
   const [channelId, setChannelId, videoId, setVideoId, apiKey] =
     useOutletContext();
   const [videos, setVideos] = useState([]);
+  const [channel, setChannel] = useState({});
 
   useEffect(() => {
     document.querySelector("#channelId").setAttribute("disabled", true);
@@ -43,6 +44,12 @@ const Results = () => {
         .then((result) => {
           setVideos(result.items);
         });
+
+      fetch(
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${apiKey}`
+      )
+        .then((res) => res.json())
+        .then((result) => setChannel(result));
     }
   }, []);
 
