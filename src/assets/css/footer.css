@@ -7,11 +7,11 @@
   gap: 5px;
 }
 
-.footer span {
+.link-underline span {
   position: relative;
 }
 
-.footer span::after {
+.link-underline span::after {
   content: "";
   background: var(--accent-clr);
   width: 100%;
@@ -24,7 +24,7 @@
   transform-origin: left;
 }
 
-.footer span:hover::after,
-.footer span:focus::after {
+.link-underline span:hover::after,
+.link-underline span:focus::after {
   transform: scaleX(1);
 }

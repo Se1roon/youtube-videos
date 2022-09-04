@@ -1,11 +1,13 @@
 import { useOutletContext } from "react-router";
 import { useEffect, useState } from "react";
+import Info from "./Info";
 
 const Results = () => {
   const [channelId, setChannelId, videoId, setVideoId, apiKey] =
     useOutletContext();
   const [videos, setVideos] = useState([]);
   const [channel, setChannel] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     document.querySelector("#channelId").setAttribute("disabled", true);
@@ -26,7 +28,7 @@ const Results = () => {
   });
 
   useEffect(() => {
-    if (videoId && !channelId) {
+    if (videoId) {
       fetch(
         `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
       )
@@ -49,16 +51,19 @@ const Results = () => {
         `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${apiKey}`
       )
         .then((res) => res.json())
-        .then((result) => setChannel(result));
+        .then((result) => {
+          setChannel(result);
+          setIsLoaded(true);
+        });
     }
   }, []);
 
-  return (
-    <div>
-      <p>{channelId}</p>
-      <p>{videoId}</p>
-    </div>
-  );
+  if (isLoaded)
+    return (
+      <div className="results">
+        <Info channel={channel} resultsNumber={16} />
+      </div>
+    );
 };
 
 export default Results;
