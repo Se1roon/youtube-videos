@@ -6,6 +6,7 @@
 @import url(home.css);
 @import url(search.css);
 @import url(results.css);
+@import url(videos.css);
 
 :root {
   --bg-clr: #000;

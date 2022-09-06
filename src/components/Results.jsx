@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router";
 import { useEffect, useState } from "react";
 import Info from "./Info";
+import Videos from "./Videos";
 
 const Results = () => {
   const [channelId, setChannelId, videoId, setVideoId, apiKey] =
@@ -58,12 +59,14 @@ const Results = () => {
     }
   }, []);
 
-  if (isLoaded)
+  if (isLoaded) {
     return (
       <div className="results">
         <Info channel={channel} resultsNumber={16} />
+        <Videos videos={videos} />
       </div>
     );
+  }
 };
 
 export default Results;
