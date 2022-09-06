@@ -1,9 +1,9 @@
 const Input = ({ options, onChange }) => {
-  const { placeholder, Id } = options;
+  const { placeholder, Id, type } = options;
 
   return (
     <input
-      type="text"
+      type={type}
       id={Id}
       placeholder={placeholder ? placeholder : null}
       onChange={onChange}
