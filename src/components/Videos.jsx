@@ -1,7 +1,6 @@
 import Video from "./Video";
 
 const Videos = ({ videos }) => {
-  console.log(videos);
   return (
     <section className="videos">
       {videos.map((video, index) => {
