@@ -7,11 +7,16 @@
 @import url(search.css);
 @import url(results.css);
 @import url(videos.css);
+@import url(scrollbar.css);
 
 :root {
   --bg-clr: #000;
   --font-clr: #fff;
   --accent-clr: hsl(0 100% 50%);
+}
+
+::selection {
+  background-color: var(--accent-clr);
 }
 
 *,
