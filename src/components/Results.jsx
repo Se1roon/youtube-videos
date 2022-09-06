@@ -4,8 +4,15 @@ import Info from "./Info";
 import Videos from "./Videos";
 
 const Results = () => {
-  const [channelId, setChannelId, videoId, setVideoId, apiKey] =
-    useOutletContext();
+  const [
+    channelId,
+    setChannelId,
+    videoId,
+    setVideoId,
+    apiKey,
+    resultsNumber,
+    setResultsNumber,
+  ] = useOutletContext();
   const [videos, setVideos] = useState([]);
   const [channel, setChannel] = useState({});
   const [isLoaded, setIsLoaded] = useState(false);
@@ -41,7 +48,7 @@ const Results = () => {
 
     if (channelId) {
       fetch(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=16&key=${apiKey}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=${resultsNumber}&key=${apiKey}`
       )
         .then((res) => res.json())
         .then((result) => {
@@ -62,7 +69,7 @@ const Results = () => {
   if (isLoaded) {
     return (
       <div className="results">
-        <Info channel={channel} resultsNumber={16} />
+        <Info channel={channel} resultsNumber={resultsNumber} />
         <Videos videos={videos} />
       </div>
     );
