@@ -77,15 +77,13 @@
 }
 
 @media screen and (min-width: 550px) {
-  .search.circle-anim::after,
-  .search.circle-anim::before {
-    left: -10rem;
+  .search {
+    font-size: 1.8rem;
   }
 }
 
 @media screen and (min-width: 1140px) {
-  .search.circle-anim::after,
-  .search.circle-anim::before {
-    left: -20rem;
+  .search {
+    font-size: 2.5rem;
   }
 }

@@ -18,7 +18,7 @@ const Search = () => {
   };
 
   return (
-    <main className="search circle-anim">
+    <main className="search">
       <Header
         content={
           <h1>
