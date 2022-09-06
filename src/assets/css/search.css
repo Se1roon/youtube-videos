@@ -26,7 +26,7 @@
   font-size: 1.6rem;
 }
 
-.search input[type="text"] {
+.search input {
   color: var(--font-clr);
   background: transparent;
   width: min(65%, 30rem);
@@ -37,11 +37,11 @@
   transition: all 400ms;
 }
 
-.search input[type="text"]:hover {
+.search input:hover {
   transform: scale(1.01);
 }
 
-.search input[type="text"]:focus {
+.search input:focus {
   transform: scale(1.01);
   box-shadow: 0 0 20px var(--accent-clr);
 }
@@ -55,7 +55,7 @@
     font-size: 2.2rem;
   }
 
-  .search input[type="text"],
+  .search input,
   .search .input-group .btn {
     font-size: 1.8rem;
   }
@@ -70,7 +70,7 @@
     font-size: 2.8rem;
   }
 
-  .search input[type="text"],
+  .search input,
   .search .input-group .btn {
     font-size: 2rem;
   }
