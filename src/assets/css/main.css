@@ -10,7 +10,7 @@
 :root {
   --bg-clr: #000;
   --font-clr: #fff;
-  --accent-clr: hsl(300 100% 50%);
+  --accent-clr: hsl(0 100% 50%);
 }
 
 *,
