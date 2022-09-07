@@ -18,51 +18,71 @@ const Results = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    document.querySelector("#channelId").setAttribute("disabled", true);
-    document.querySelector("#videoId").setAttribute("disabled", true);
+    const channelInp = document.querySelector("#channelId");
+    const videoInp = document.querySelector("#videoId");
+    const resultsInp = document.querySelector("#resultsNumber");
+
+    channelInp.setAttribute("disabled", true);
+    videoInp.setAttribute("disabled", true);
+    resultsInp.setAttribute("disabled", true);
 
     return function () {
-      if (
-        !(
-          document.querySelector("#channelId") &&
-          document.querySelector("#videoId")
-        )
-      )
-        return;
+      if (!(channelInp && videoInp && resultsInp)) return;
 
-      document.querySelector("#channelId").removeAttribute("disabled");
-      document.querySelector("#videoId").removeAttribute("disabled");
+      channelInp.removeAttribute("disabled");
+      videoInp.removeAttribute("disabled");
+      resultsInp.removeAttribute("disabled");
     };
-  });
+  }, []);
 
   useEffect(() => {
     if (videoId) {
       fetch(
         `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${apiKey}`
       )
-        .then((res) => res.json())
+        .then(async (res) => {
+          if (res.status >= 400)
+            throw new Error("Error occured when getting video data.");
+
+          return res.json();
+        })
         .then((result) => {
           setChannelId(result.items[0].snippet.channelId);
-        });
+        })
+        .catch((error) => console.log(`An error has occured - ${error}`));
     }
 
     if (channelId) {
       fetch(
         `https://youtube.googleapis.com/youtube/v3/search?part=snippet&channelId=${channelId}&maxResults=${resultsNumber}&key=${apiKey}`
       )
-        .then((res) => res.json())
+        .then(async (res) => {
+          if (res.status >= 400)
+            throw new Error(
+              "Error occured when getting channel data and setting videos."
+            );
+
+          return res.json();
+        })
         .then((result) => {
           setVideos(result.items);
-        });
+        })
+        .catch((error) => console.log(`An error has occured - ${error}`));
 
       fetch(
         `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&id=${channelId}&key=${apiKey}`
       )
-        .then((res) => res.json())
+        .then(async (res) => {
+          if (res.status >= 400)
+            throw new Error("Error occured when setting channel.");
+
+          return res.json();
+        })
         .then((result) => {
           setChannel(result);
           setIsLoaded(true);
-        });
+        })
+        .catch((error) => console.log(`An error has occured - ${error}`));
     }
   }, []);
 
