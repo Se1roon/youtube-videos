@@ -86,6 +86,17 @@ const Results = () => {
     }
   }, []);
 
+  if (videos.length !== 0) {
+    let result = 0;
+    for (let item of videos) {
+      result += 1;
+
+      if (item.id.kind === "youtube#channel") result -= 1;
+    }
+
+    setResultsNumber(result);
+  }
+
   if (isLoaded) {
     return (
       <div className="results">
